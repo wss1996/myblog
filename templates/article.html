@@ -1,0 +1,240 @@
+﻿{% extends 'base_right.html' %}
+{% load blog_tags static %}
+{% block title %}{{ object.title }}{% endblock title %}
+{% block description %}
+    <meta name="description" content="{{ object.summary }}"/>
+    {% endblock description %}
+{% block keywords %}
+    <meta name="keywords" content="{% get_article_keywords object %}"/>
+    {% endblock keywords %}
+
+{% block body %}
+<div class="content-wrap">
+	    <div class="content">
+            <div class="breadcrumbs">
+                <a title="返回首页" href="/"><i class="fa fa-home"></i></a><small>></small>
+                <a href="/category/{{ object.category.bigcategory.slug }}">{{ object.category.bigcategory.name }}</a> <small>></small>
+                <a href="/category/{{ object.category.bigcategory.slug }}/{{ object.category.name|lower }}">{{ object.category.name }}</a>
+                <small>></small> <span class="muted">{{ object.title }}</span>
+            </div>
+            <header class="article-header">
+                <h1 class="article-title"><a href="/article/{{ object.slug }}">{{ object.title }}</a></h1>
+                <div class="meta">
+                    <span id="mute-category" class="muted">
+                        <i class="fa fa-list-alt"></i>
+                        {{ object.category.name }}
+                    </span>
+                    <span class="muted">
+                        <i class="fa fa-user"></i>
+                        <a href="/author/{{ object.author.name }}">{{ object.author }}</a>
+                    </span>
+                    <time class="muted"><i class="fa fa-clock-o"></i> {{ object.create_date|date:'y-m-d' }}</time>
+                    <span class="muted"><i class="fa fa-eye"></i> {{ object.views }}浏览</span>
+                    <span class="muted">
+                        <i class="fa fa-comments-o"></i>
+                        <a href="/article/{{ object.slug }}#respond">0评论</a>
+                    </span>
+                    <span class="muted">
+                        <i class="fa fa-list-alt"></i>
+                         <a href="{% url "accounts:update" article.id %}">修改文章</a>
+{#                         <a href="{% url "accounts:delete" article.id %}">删除文章</a>#}
+{#                       <a href="/accounts/delete/{{ article.id }}/">删除文章</a>#}
+                    </span>
+                     <span class="muted">
+                        <i class="fa fa-list-alt"></i>
+                         <a href="#" onclick="confirm_delete()">删除文章</a>
+{#                         <a href="{% url "accounts:delete" article.id %}">删除文章</a>#}
+{#                       <a href="/accounts/delete/{{ article.id }}/">删除文章</a>#}
+                    </span>
+                    <script>
+    //删除文章的弹窗js函数
+                        function confirm_delete()
+                        {
+                            layer.open({
+                                //弹窗的标题
+                                title:"确认删除",
+                                //正文
+                                content:"确定要删除这篇文章吗？",
+                                yes:function(index,layero)
+                                {
+                                    //指定跳转的url
+                                    location.href = '{% url "accounts:delete" article.id %}'
+                                }
+                            })
+                        }
+                    </script>
+
+                </div>
+            </header>
+            <article class="article-content">
+			    {{ object.body|safe }}
+
+                <p>转载请注明：
+                    <a href="{% url 'blog:article' object.slug %}">王双双的个人网站</a> &raquo;
+                    <a href="{% url 'blog:article' object.slug %}">{{ object.title }}</a>
+                </p>
+
+      
+                <div class="article-social">
+                            <a href="javascript:;" data-action="ding" data-id="{{ object.id }}" id="Addlike" class="action">
+                                <i class="fa fa-heart-o"></i>喜欢 (<span class="count">{{ object.loves }}</span>)
+                            </a>
+                            <span class="or">or</span>
+                            <span class="action action-share bdsharebuttonbox"><i class="fa fa-share-alt"></i>分享 (
+                                <span class="bds_count" data-cmd="count" title="累计分享0次">0</span>)
+{#                                <div class="action-popover">#}
+{#                                    <div class="popover top in">#}
+{#                                        <div class="arrow"></div>#}
+{#                                        <div class="popover-content">#}
+{#                                            <a href="#" class="sinaweibo fa fa-weibo" data-cmd="tsina" title="分享到新浪微博"></a>#}
+{#                                            <a href="#" class="bds_qzone fa fa-star" data-cmd="qzone" title="分享到QQ空间"></a>#}
+{#                                            <a href="#" class="tencentweibo fa fa-tencent-weibo" data-cmd="tqq" title="分享到腾讯微博"></a>#}
+{#                                            <a href="#" class="qq fa fa-qq" data-cmd="sqq" title="分享到QQ好友"></a>#}
+{#                                            <a href="#" class="bds_renren fa fa-renren" data-cmd="renren" title="分享到人人网"></a>#}
+{#                                            <a href="#" class="bds_weixin fa fa-weixin" data-cmd="weixin" title="分享到微信"></a>#}
+{#                                            <a href="#" class="bds_more fa fa-ellipsis-h" data-cmd="more"></a>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+                            </span>
+                </div>
+            </article>
+
+
+            <div style="background:#fff;padding-bottom:20px;font-size:14px;">
+                <p style="text-align: center;margin-bottom:20px;padding:0px 20px">您的支持是博主写作最大的动力，如果您喜欢我的文章，感觉我的文章对您有帮助，请狠狠点击下面的</p>
+                <p style="text-align: center;">
+                    <a href="{% url 'blog:category' 'money' '' %}">
+                        <input style="width: 310px; margin: 10px auto 0px; background-color: #f58a87; color: #ffffff; height: 40px; border: none; font-family: 'Microsoft Yahei'; font-size: 16px; letter-spacing: 2px;" type="button" value="我要小额赞助" />
+                    </a>
+                </p>
+            </div>
+
+
+                <footer class="article-footer">
+                    <!--文章标签-->
+                    <div class="article-tags">
+                    <i class="fa fa-tags"></i>
+                        {% get_article_tag object.id as tags %}
+                        {% for tag in tags %}..
+                            <a href="{% url 'blog:tag' tag.name %}" rel="tag">{{ tag.name }}</a>
+                        {% endfor %}
+                    </div>
+                    <!--文章标签结束-->
+
+                </footer>
+                <!--推荐文章-->
+                <nav class="article-nav">
+                        <span class="article-nav-prev">
+                            <i class="fa fa-angle-double-left"></i>
+                            {% get_article_previous object.id as article_previous %}
+                            <a href="{% url 'blog:article'  article_previous.pk %}" rel="prev">{{ article_previous.title }}</a>
+                        </span>
+                        <span class="article-nav-next">
+                            {% get_article_next object.id as article_next %}
+                            <a href="{% url 'blog:article'  article_next.pk %}" rel="prev">{{ article_next.title }}</a>
+                            <i class="fa fa-angle-double-right"></i>
+                        </span>
+                </nav>
+
+		    <div class="related_top">
+			    <div class="related_posts">
+                  <ul class="related_img">
+                    {% get_category_article as  category_article %}
+                    {% for article in category_article.article_4 %}
+                        <li class="related_box"  >
+                        <a href="{% url 'blog:article' article.pk %}" title="{{ article.title }}" target="_blank">
+                  <img src="{{ article.img_link }}" alt="{{ article.title }}" />	<br><span class="r_title">{{ article.title }}</span></a>
+                        </li>
+                    {% endfor %}
+                  </ul>
+
+                  <div class="relates">
+                    <ul>
+                        {% for article in category_article.article_8 %}
+                        <li>
+                            <i class="fa fa-minus"></i>
+                            <a href="{% url 'blog:article' article.pk %}">{{ article.title }}</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+            </div>
+
+{#		    {% include 'comment_list.html' %}#}
+
+           {#    <!-- 发表评论 -->#}
+            <hr>
+    {% if user.is_authenticated %}
+        <div>
+            <form
+                action="{% url 'comment:post_comment' article.pk %}"
+                method="POST"
+                role="form">
+            {% csrf_token %}
+                <div class="form-group">
+                    <label for="body">
+                        <strong><p style="text-align: center;margin-bottom:20px;padding:0px 20px;font-size: 25px">我要发表评论</p>
+                        </strong>
+                    </label>
+{#该样式是设置评论输入文本框的大小#}
+{#               <style type="text/css">#}
+{#                     .comments {#}
+{#                      width:98%;/*自动适应父布局宽度*/#}
+{#                      overflow:auto;#}
+{#                      word-break:break-all;#}
+{#/*在ie中解决断行问题(防止自动变为在一行显示，主要解决ie兼容问题，ie8中当设宽度为100%时，文本域类容超过一行时，#}
+{#当我们双击文本内容就会自动变为一行显示，所以只能用ie的专有断行属性“word-break或word-wrap”控制其断行)*/#}
+{#                     }#}
+{#               </style>#}
+{##}
+{#                    <textarea#}
+{#                            class="comments"#}
+{#                            type="text"#}
+{#                           class="form-control"#}
+{#                            id="content"#}
+{#                            name="content"#}
+{#                            cols="10"#}
+{#                            rows="10">#}
+{#                    </textarea>#}
+                            <div>
+                                {{ form.media }}
+                                {{ form.content }}
+                            </div>
+
+                </div>
+                <!-- 提交按钮 -->
+                <button type="submit" class="btn btn-primary ">发送</button>
+            </form>
+        </div>
+        <br>
+              {% else %}
+        <br>
+        <h5 class="row justify-content-center">
+        <a href="{% url 'accounts:login' %}?next={{ request.path }}">登录</a>
+            请<a href="{% url 'accounts:login' %}?next={{ request.path }}">登录</a>后回复
+        </h5>
+        <br>
+    {% endif %}
+    <!-- 显示评论 -->
+    <h4>共有{{ comments.count }}条评论</h4>
+    <div>
+        {% for comment in comments %}
+            <hr>
+            <p>
+                <strong style="color: #ff0045">
+                    {{ comment.author }}
+                </strong> 于
+                <span style="color: #3fc15c">
+                    {{ comment.create_date|date:"Y-m-d H:i:s" }}
+                </span> 发表评论：
+            </p>
+            <pre style="font-family: inherit; font-size: 18px;">
+        {{ comment.content|safe }}</pre>
+        {% endfor %}
+    </div>
+	    </div>
+</div>
+
+{% endblock body %}

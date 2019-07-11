@@ -1,0 +1,75 @@
+﻿{% extends 'account/base.html' %}
+
+
+{% block title %}
+<title>登录</title>
+{% endblock %}
+<!--主要内容块-->
+{% block main %}
+    <main>
+
+
+{#    <div class="container">#}
+{#    <div class="row">#}
+{#        <div class="col-12">#}
+{#            <br>#}
+{#            <form method="post" action=".">#}
+{#                {% csrf_token %}#}
+{#                <!-- 账号 -->#}
+{#                <div class="form-group">#}
+{#                    <label for="username">账号</label>#}
+{#                    <input type="text" class="form-control" id="username" name="username">#}
+{#                </div>#}
+{#                <!-- 密码 -->#}
+{#                <div class="form-group">#}
+{#                    <label for="password">密码</label>#}
+{#                    <input type="password" class="form-control" id="password" name="password">#}
+{#                </div>#}
+{#                <!-- 提交按钮 -->#}
+{#                <button type="submit" class="btn btn-primary">提交</button>#}
+{#            </form>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-8 col-md-6 offset-sm-2 offset-md-3 px-xl-5">
+            <div class="card rounded-0 px-3 px-lg-4">
+                <div class="card-header text-center bg-white py-2">
+                    <h3 class="my-1 text-info">博客本地登录</h3>
+                </div>
+                       <div class="card-body card-login">
+                   <form class="login" method="POST" action="{% url 'accounts:login' %}">
+                       {% csrf_token %}
+                         {% if error %}
+                            <div class="alert alert-block alert-danger"> <ul> <li>您提供的用户名或密码不正确。</li> </ul>
+                            </div>
+                         {% endif %}
+{% if inactive %}
+<div class="alert alert-block alert-danger"> <ul> <li>您的账号已被封禁。</li> </ul> </div>
+    {% endif %}
+              <div id="div_id_login" class="form-group"> <label for="id_login" class="form-control-label  requiredField">账号<span class="asteriskField">*</span> </label>
+                  <div class=""> <input type="text" name="username" placeholder="用户名或e-mail" autofocus="autofocus" value="{{ username }}" class="textinput textInput form-control" required id="id_login" />
+                  </div>
+              </div>
+              <div id="div_id_password" class="form-group"> <label for="id_password" class="form-control-label  requiredField">密码<span class="asteriskField">*</span> </label>
+                  <div class=""> <input type="password" value="{{ pwd }}" name="password" placeholder="密码" class="textinput textInput form-control" required id="id_password" />
+                  </div>
+              </div>
+                       <a class="secondaryAction" href="{% url 'accounts:register' %}">忘记密码了？</a>
+                       <button class="pull-right btn btn-info btn-sm rounded-0" type="submit">登录</button>
+                       <div class="login-title">
+                           <span><a  href="{% url 'accounts:register' %}">还没账号？去注册</a></span>
+                       </div>
+                   </form>
+                       </div>
+            </div>
+        </div>
+    </div>
+</div>
+</main>
+{% endblock %}
+
+
