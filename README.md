@@ -1,3 +1,4 @@
-ï»¿# myblog
-åŸºäºDjangoå¼€å‘çš„ä¸ªäººåšå®¢é¡¹ç›®
+# myblog
+»ùÓÚDjango¿ª·¢µÄ¸öÈË²©¿ÍÏîÄ¿
 Creating a new branch is quick.
+Creating a new branch is quick A simple.
