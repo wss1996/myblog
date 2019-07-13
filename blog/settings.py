@@ -150,7 +150,7 @@ STATIC_URL = '/static/'
 
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-STATIC_ROOT = '/home/wss/sites/shuangblog.com/myblog'
+STATIC_ROOT = '/home/wss/sites/shuangblog.com/myblog/static'
 
 
 STATICFILES_DIRS = [
