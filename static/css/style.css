@@ -2584,7 +2584,7 @@ a:focus,a:hover {
 
 .footer-inner {
 	max-width: 1226px;
-	padding: 30px 200px 14px;
+	padding: 25px 20px 14px;
 	margin: 0 auto;
 	color: #aaa;
 	/*color: #fff;*/
@@ -4621,7 +4621,8 @@ a.badge-inverse:hover .label-arrow,a.label-inverse:hover .label-arrow {
 }
 
 .title {
-	border-bottom: 2px solid #90bba8;
+	/*border-bottom: 2px solid #90bba8;*/
+	border-bottom: 2px solid #ff0045;
 	position: relative;
 	/*left:30px;*/
 	height: 45px;
@@ -7359,7 +7360,7 @@ a.badge-inverse:hover .label-arrow,a.label-inverse:hover .label-arrow {
 
 .footer {
 	background: #333;
-	border-top: 8px solid #d56464;
+	border-top: 10px solid #d56464;
 	position: relative
 }
 
@@ -7470,33 +7471,33 @@ a.badge-inverse:hover .label-arrow,a.label-inverse:hover .label-arrow {
 }
 
 /*这里定义热门排行的字体以及样式*/
-/*.hot-posts h2 {*/
-	/*!*position: relative;*!*/
-	/*!*left:30px;*!*/
-	/*line-height: 45px;*/
-	/*font-weight: 400;*/
-	/*color: #1abc9c;*/
-	/*font-size: 20px*/
-/*}*/
-
-.title-hot{
-	border-bottom: 2px solid #90bba8;
-	position: relative;
+.hot-posts h2 {
+	/*position: relative;*/
 	/*left:30px;*/
-	height: 45px;
-	margin: 10px 20px
-
-}
-
-.title-hot h2{
-	position: relative;
-	left:360px;
 	line-height: 45px;
 	font-weight: 400;
 	color: #1abc9c;
 	font-size: 20px
-
 }
+
+/*.title-hot{*/
+	/*border-bottom: 2px solid #90bba8;*/
+	/*position: relative;*/
+	/*!*left:30px;*!*/
+	/*height: 45px;*/
+	/*margin: 10px 20px*/
+
+/*}*/
+
+/*.title-hot h2{*/
+	/*position: relative;*/
+	/*left:360px;*/
+	/*line-height: 45px;*/
+	/*font-weight: 400;*/
+	/*color: #1abc9c;*/
+	/*font-size: 20px*/
+
+/*}*/
 
 .hot-posts ul {
 	margin: 0 20px 10px;
@@ -7597,6 +7598,7 @@ span .action-popover .popover-content .bds_weixin {
 span .action-popover .popover-content .bds_more {
 	background: none repeat scroll 0 0 #40A57D
 }
+
 
 .footer .footer-inner .copyright {
 	text-align: center;

@@ -18,7 +18,7 @@
                 <small>></small> <span class="muted">{{ object.title }}</span>
             </div>
             <header class="article-header">
-                <h1 class="article-title"><a href="/article/{{ object.slug }}">{{ object.title }}</a></h1>
+                <h1 class="article-title"><a href="/article/{{ object.pk }}">{{ object.title }}</a></h1>
                 <div class="meta">
                     <span id="mute-category" class="muted">
                         <i class="fa fa-list-alt"></i>
@@ -32,7 +32,7 @@
                     <span class="muted"><i class="fa fa-eye"></i> {{ object.views }}浏览</span>
                     <span class="muted">
                         <i class="fa fa-comments-o"></i>
-                        <a href="/article/{{ object.slug }}#respond">0评论</a>
+                        <a href="/article/{{ object.pk }}#respond">0评论</a>
                     </span>
                     <span class="muted">
                         <i class="fa fa-list-alt"></i>

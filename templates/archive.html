@@ -17,7 +17,7 @@
 				<article class="excerpt">
 	<header><a class="label label-important" href="/category/{{ article.category.bigcategory.name }}/{{ article.category.name|lower }}">{{ article.category.name }}<i class="label-arrow"></i></a><h2><a target="_blank" href="/article/{{ article.slug }}" title="{{ article.title }}">{{ article.title }} </a></h2>
 	</header>
-	<div class="focus"><a target="_blank" href="/article/{{ article.slug }}"><img class="thumb" width="200" height="123" src="{{ article.img_link }}" alt="{{ article.title }}" /></a></div>
+	<div class="focus"><a target="_blank" href="/article/{{ article.pk }}"><img class="thumb" width="200" height="123" src="{{ article.img_link }}" alt="{{ article.title }}" /></a></div>
 			<span class="note"> {{ article.summary }}</span>
 <p class="auth-span">
 		<span class="muted"><i class="fa fa-user"></i> <a href="/author/{{ article.author }}">{{ article.author }}</a></span>

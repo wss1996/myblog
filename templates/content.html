@@ -7,7 +7,7 @@
     <meta name="keywords" content="{% get_title category as c %}{{ c.keywords }}"/>
 {% endblock keywords %}
 
-{% block title %}{% get_title category as c %}静觅丨{{ c.name }}{% endblock title %}
+{% block title %}{% get_title category as c %}hello丨{{ c.name }}{% endblock title %}
 
 {% block body %}
     <div class="content-wrap">
@@ -21,9 +21,9 @@
             <article class="excerpt">
                 <header>
                     <a class="label label-important" href="/category/{{ article.category.bigcategory.name }}/{{ article.category.name|lower }}">{{ article.category.name }}<i class="label-arrow"></i></a>
-                    <h2><a target="_blank" href="/article/{{ article.slug }}" title="{{ article.title }}">{{ article.title }} </a></h2>
+                    <h2><a target="_blank" href="/article/{{ article.pk }}" title="{{ article.title }}">{{ article.title }} </a></h2>
                 </header>
-                <div class="focus"><a target="_blank" href="/article/{{ article.slug }}">
+                <div class="focus"><a target="_blank" href="/article/{{ article.pk }}">
                     <img class="thumb" width="200" height="123" src="{{ article.img_link }}" alt="{{ article.title }}" /></a>
                 </div>
                 <span class="note"> {{ article.summary }}</span>
@@ -32,7 +32,7 @@
                     <span class="muted"><i class="fa fa-clock-o"></i> {{ article.create_date|date:'Y-m-d'}}</span>
                     <span class="muted"><i class="fa fa-eye"></i> {{ article.views }}浏览</span>
                     <span class="muted"><i class="fa fa-comments-o"></i>
-                        <a target="_blank" href="/article/{{ article.slug }}#comments">评论</a></span>
+                        <a target="_blank" href="/article/{{ article.pk }}#comments">评论</a></span>
                     <span class="muted"><a href="javascript:;" data-action="ding" data-id="455" id="Addlike" class="action">
                         <i class="fa fa-heart-o"></i><span class="count">{{ article.love }}</span>喜欢</a>
                     </span>
