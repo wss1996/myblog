@@ -212,7 +212,7 @@ class Activate(models.Model):
         verbose_name_plural = verbose_name
 
     def __str__(self):
-        return self.id
+        return str(self.id)
 
     # from django.db import models
     # from django.conf import settings

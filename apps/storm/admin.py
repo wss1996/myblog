@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 from django.contrib import admin
-from .models import Article, Tag, Category, Carousel, Keyword, FriendLink, BigCategory
+from .models import Article, Tag, Category, Carousel, Keyword, FriendLink, BigCategory,Activate
 
 
 @admin.register(Article)
@@ -68,3 +68,10 @@ class FriendLinkAdmin(admin.ModelAdmin):
     list_display = ('name', 'description', 'link', 'create_date', 'is_active', 'is_show')
     date_hierarchy = 'create_date'
     list_filter = ('is_active', 'is_show')
+
+# @admin.register(Activate)
+# class ActivateAdmin(admin.ModelAdmin):
+#     list_display = ('text', 'is_active', 'id')
+
+
+admin.site.register(Activate)
