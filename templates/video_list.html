@@ -1,0 +1,123 @@
+﻿{%extends 'base_right.html' %}
+{% load blog_tags %}
+{% block title %}Hello丨个人视频{% endblock title %}
+
+{% block description %}
+    <meta name="description" content="{% get_title category as bigcategory %}{{ bigcategory.description }}"/>
+    {% endblock description %}
+    {% block keywords %}
+    <meta name="keywords" content="{% get_title category as bigcategory %}{{ bigcategory.keywords }}"/>
+    {% endblock keywords %}
+
+{% block body %}
+    <div class="content-wrap">
+        <div class="content">
+{#            <video src="http://pw1af8xl1.bkt.clouddn.com/image/myblog/chuibi/00.mp4"#}
+{#                   controls#}
+{#                   style="max-width:100%"#}
+{#                   preload="auto" width="800" height="500"#}
+{#            >#}
+{#                您的浏览器太老，无法运行视频哦#}
+{#            </video>#}
+
+
+
+{#            <header class="archive-header">#}
+{#                <h1><i class="fa fa-folder-open"></i>  &nbsp;分类：{{ category }}#}
+{#                    <a title="订阅福利专区" target="_blank" href="{% url 'blog:category' resources '' %}"><i class="rss fa fa-rss"></i></a>#}
+{#                </h1>#}
+{#            </header>#}
+
+           {% for article in articles %}
+            <article class="excerpt">
+                <header>
+                    <a class="label label-important" href="/">个人视频<i class="label-arrow"></i></a>
+                    <h2><a target="_blank" href="/detail/{{ article.pk }}" title="{{ article.title }}">{{ article.title }} </a></h2>
+                </header>
+                <div class="focus"><a target="_blank" href="/detail/{{ article.pk }}">
+                    <img class="thumb" width="200" height="123" src="{{ article.img_link }}" alt="{{ article.title }}" /></a>
+                </div>
+                <span class="note"> {{ article.summary }}</span>
+                <p class="auth-span">
+                    <span class="muted"><i class="fa fa-user"></i> <a href="{% url 'accounts:profile' %}?next={{ request.path }}">{{ article.author }}</a></span>
+                    <span class="muted"><i class="fa fa-clock-o"></i> {{ article.create_date|date:'Y-m-d'}}</span>
+                    <span class="muted"><i class="fa fa-eye"></i> {{ article.views }}浏览</span>
+{#                    <span class="muted"><i class="fa fa-comments-o"></i>#}
+{#                        <a target="_blank" href="/article/{{ article.pk }}#comments">评论</a></span>#}
+{#                    <span class="muted"><a href="javascript:;" data-action="ding" data-id="455" id="Addlike" class="action">#}
+{#                        <i class="fa fa-heart-o"></i><span class="count">{{ article.loves }}</span>喜欢</a>#}
+{#                    </span>#}
+                    <span class="muted"><a href="javascript:;" data-action="ding" data-id="{{ article.id }}" id="Addlike" class="action">
+                        <i class="fa fa-heart-o"></i><span class="count">{{ article.loves }}</span>喜欢</a>
+                    </span>
+                </p>
+            </article>
+        {% empty %}
+                <div class="no-post">当前分类下还没有发布的文章！</div>
+        {% endfor %}
+{#        {% if is_paginated %}#}
+{#            <div class="pagination">#}
+{#                    {% if right %}#}
+{#                        {% for i in right %}#}
+{#                            <div class="next-page"><a href="?page={{ i }}">{{ i }}</a></div>#}
+{#                            <div class="next-page"><a href="?page={{ i }}">{{ i }}</a></div>#}
+{#                        {% endfor %}#}
+{#                    {% endif %}#}
+{#            </div>#}
+{#        {% endif %}#}
+        </div>
+    </div>
+{%endblock body%}
+
+
+
+{#{%block body%}#}
+{##}
+{##}
+{#    <video src="http://pw1af8xl1.bkt.clouddn.com/image/myblog/chuibi/00.mp4"#}
+{#           controls#}
+{#           style="max-width:100%"#}
+{#           preload="auto" width="800" height="500"#}
+{#    >#}
+{#        您的浏览器太老，无法运行视频哦#}
+{#    </video>#}
+{#<div class="pagewrapper clearfix">#}
+{#		<header class="pageheader clearfix">#}
+{#			<h1 class="pull-left">#}
+{#				<a href="https://cuiqingcai.com/question">提问交流</a>#}
+{#			</h1>#}
+{#			<div class="pull-right"><!-- 百度分享 -->#}
+{#	            <span class="action action-share bdsharebuttonbox"><i class="fa fa-share-alt"></i>分享 (<span class="bds_count" data-cmd="count" title="累计分享0次">0</span>)#}
+{#                    <div class="action-popover">#}
+{#                        <div class="popover top in">#}
+{#                            <div class="arrow"></div>#}
+{#                        <div class="popover-content">#}
+{#                            <a href="#" class="sinaweibo fa fa-weibo" data-cmd="tsina" title="分享到新浪微博"></a>#}
+{#                            <a href="#" class="bds_qzone fa fa-star" data-cmd="qzone" title="分享到QQ空间"></a>#}
+{#                            <a href="#" class="tencentweibo fa fa-tencent-weibo" data-cmd="tqq" title="分享到腾讯微博"></a>#}
+{#                            <a href="#" class="qq fa fa-qq" data-cmd="sqq" title="分享到QQ好友"></a>#}
+{#                            <a href="#" class="bds_renren fa fa-renren" data-cmd="renren" title="分享到人人网"></a>#}
+{#                            <a href="#" class="bds_weixin fa fa-weixin" data-cmd="weixin" title="分享到微信"></a>#}
+{#                            <a href="#" class="bds_more fa fa-ellipsis-h" data-cmd="more"></a>#}
+{#                        </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </span>#}
+{#            </div>#}
+{#		</header>#}
+{#        <div class="article-content">#}
+{#				<div class="">#}
+{#                    <div id="qrcodes">#}
+{#                        <div class="row">#}
+{#                            <div class="col-xs-12 col-md-4">#}
+{#                                <div class="p-sm" style="overflow: hidden; padding-bottom: 15px;">#}
+{#                                    <p class="text-center">很多朋友会通过各种途径咨询我我问题，有的通过邮件，有的在公众号留言，有的微博知乎私信，很多情况下我并不能及时查看到消息，另外由于个人精力有限也并没有那么多余力一一为大家解答，为此我开通了一个圈子，作为一个统一的交流问答平台，我会每天定时抽出时间为大家解答相关问题，同时也会为大家分享一些技术及行业资讯，欢迎朋友们的加入~</p>#}
+{#                                    <p class="text-center"><img class="aligncenter wp-image-6140 size-medium" src="/static/images/圈子.jpg" alt="" width="233" height="320"  sizes="(max-width: 233px) 100vw, 233px" /></p>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#        </div>#}
+{#</div>#}
+{#{%endblock body%}#}

@@ -11,6 +11,7 @@ from django.shortcuts import render, HttpResponse, render_to_response
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404, get_list_or_404
 from .models import Article, BigCategory, Category, Tag
+from video.models import Video
 from comment.forms import CommentForm
 from comment.models import Articlecomment
 from markdown.extensions.toc import TocExtension  # 锚点的拓展
@@ -205,9 +206,12 @@ class ProjectView(generic.TemplateView):
     template_name = "project.html"
 #
 #
+# class QuestionView(generic.TemplateView):
+#     template_name = "video_list.html"
+
 # def QuestionView(request):
-#     return render(request, 'question.html',{'category':'question'})
-#
+#     return render(request, 'video_list.html',{'category':'question'})
+
 
 #
 #
@@ -216,7 +220,10 @@ def LoveView(request):
     data_id = request.POST.get('um_id', '')
     if data_id:
         article = Article.objects.get(id=data_id)
+        video = Video.objects.get(id=data_id)
         article.loves += 1
+        video.loves = article.loves
+        video.save()
         article.save()
         return HttpResponse(article.loves)
     else:

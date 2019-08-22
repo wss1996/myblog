@@ -16,8 +16,6 @@ import sys
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '^6wty8vb8%_8@f_lodipz1%=2avc3%ivhxk3&eyr=@a19ur8t0'
@@ -26,7 +24,7 @@ SECRET_KEY = '^6wty8vb8%_8@f_lodipz1%=2avc3%ivhxk3&eyr=@a19ur8t0'
 # DEBUG = False
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '47.100.239.139','localhost ', 'shuangshuangblog.com']
+ALLOWED_HOSTS = ['127.0.0.1', '47.100.239.139','localhost ', '.shuangshuangblog.com']
 
 # Application definition
 
@@ -40,7 +38,8 @@ INSTALLED_APPS = [
     'storm',#添加用户的应用
     'user',
     'ckeditor',
-    'comment'  # 评论
+    'comment',# 评论
+    'video'
 ]
 
 MIDDLEWARE = [
@@ -151,11 +150,11 @@ STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # STATIC_ROOT = '/home/wss/sites/shuangblog.com/myblog/static'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static')
-# ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 
 
 # 媒体文件收集

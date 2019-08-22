@@ -13,7 +13,7 @@
 	    <div class="content">
             <div class="breadcrumbs">
                 <a title="返回首页" href="/"><i class="fa fa-home"></i></a><small>></small>
-                <a href="/category/{{ object.category.bigcategory.slug }}">{{ object.category.bigcategory.name }}</a> <small>></small>
+                <a href="/category/{{ object.category.bigcategory.slug }}//">{{ object.category.bigcategory.name }}</a> <small>></small>
                 <a href="/category/{{ object.category.bigcategory.slug }}/{{ object.category.name|lower }}">{{ object.category.name }}</a>
                 <small>></small> <span class="muted">{{ object.title }}</span>
             </div>
@@ -26,7 +26,7 @@
                     </span>
                     <span class="muted">
                         <i class="fa fa-user"></i>
-                        <a href="/author/{{ object.author.name }}">{{ object.author }}</a>
+                       {{ object.author }}
                     </span>
                     <time class="muted"><i class="fa fa-clock-o"></i> {{ object.create_date|date:'y-m-d' }}</time>
                     <span class="muted"><i class="fa fa-eye"></i> {{ object.views }}浏览</span>
@@ -66,15 +66,17 @@
 
                 </div>
             </header>
+
             <article class="article-content">
 			    {{ object.body|safe }}
 
                 <p>转载请注明：
-                    <a href="{% url 'blog:article' object.slug %}">王双双的个人网站</a> &raquo;
-                    <a href="{% url 'blog:article' object.slug %}">{{ object.title }}</a>
+                    <a href="{% url 'blog:article' object.id %}">王双双的个人网站</a> &raquo;
+                    <a href="{% url 'blog:article' object.id %}">{{ object.title }}</a>
                 </p>
 
-      
+
+
                 <div class="article-social">
                             <a href="javascript:;" data-action="ding" data-id="{{ object.id }}" id="Addlike" class="action">
                                 <i class="fa fa-heart-o"></i>喜欢 (<span class="count">{{ object.loves }}</span>)

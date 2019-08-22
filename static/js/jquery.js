@@ -1217,6 +1217,7 @@ function() {
             if (a(this).hasClass("actived")) {
                 return alert("已经点过赞啦！")
             } else {
+
                 a(this).addClass("actived");
                 var z = a(this).data("id"),
                 y = a(this).data("action"),
@@ -1239,10 +1240,42 @@ function() {
                 return false
             }
         };
+
+        //         a.fn.postLike1 = function() {
+        //     if (a(this).hasClass("actived")) {
+        //         return alert("已经点过赞啦！")
+        //     } else {
+        //
+        //         a(this).addClass("actived");
+        //         var z = a(this).data("id"),
+        //         y = a(this).data("action"),
+        //         x = a(this).children(".count");
+        //
+        //         var w = {
+        //             action: "bigfa_like",
+        //             um_id: z,
+        //             um_action: y
+        //         };
+        //         a.post("/video/love/", w,
+        //         function(A) {
+        //             a(x).html(A)
+        //         });
+        //         a.tipsBox({
+        //             obj: a(this),
+        //             str: "+1",
+        //             callback: function() {}
+        //         });
+        //         return false
+        //     }
+        // };
         a(document).on("click", "#Addlike",
         function() {
             a(this).postLike()
         });
+        //      a(document).on("click", "#Addlike1",
+        // function() {
+        //     a(this).postLike1()
+        // });
         a(document).on("click",
         function(D) {
             D = D || window.event;

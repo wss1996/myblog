@@ -28,13 +28,16 @@
                 </div>
                 <span class="note"> {{ article.summary }}</span>
                 <p class="auth-span">
-                    <span class="muted"><i class="fa fa-user"></i> <a href="/author/{{ article.author }}">{{ article.author }}</a></span>
+                    <span class="muted"><i class="fa fa-user"></i> <a href="{% url 'accounts:profile' %}?next={{ request.path }}">{{ article.author }}</a></span>
                     <span class="muted"><i class="fa fa-clock-o"></i> {{ article.create_date|date:'Y-m-d'}}</span>
                     <span class="muted"><i class="fa fa-eye"></i> {{ article.views }}浏览</span>
                     <span class="muted"><i class="fa fa-comments-o"></i>
                         <a target="_blank" href="/article/{{ article.pk }}#comments">评论</a></span>
-                    <span class="muted"><a href="javascript:;" data-action="ding" data-id="455" id="Addlike" class="action">
-                        <i class="fa fa-heart-o"></i><span class="count">{{ article.love }}</span>喜欢</a>
+{#                    <span class="muted"><a href="javascript:;" data-action="ding" data-id="455" id="Addlike" class="action">#}
+{#                        <i class="fa fa-heart-o"></i><span class="count">{{ article.loves }}</span>喜欢</a>#}
+{#                    </span>#}
+                    <span class="muted"><a href="javascript:;" data-action="ding" data-id="{{ article.id }}" id="Addlike" class="action">
+                        <i class="fa fa-heart-o"></i><span class="count">{{ article.loves }}</span>喜欢</a>
                     </span>
                 </p>
             </article>
