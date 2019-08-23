@@ -74,28 +74,32 @@
 
             <!--广告位-->
             <div class="widget widget_text">
+                <div class="title"><h2>合作加微</h2></div>
                 <div class="textwidget">
-                    <a href="/"><img style="width:100%" src="{% static 'images/hhhhh.jpg' %}"/></a>
+{#                    <a href="/"><img style="width:100%" src="{% static 'images/hhhhh.jpg' %}"/></a>#}
+                    <a href="{% url 'blog:Cooperation' %}"><img style="width:100%" src="http://pw1af8xl1.bkt.clouddn.com/image/myblog/static/%E4%B8%AA%E4%BA%BA%E5%BE%AE%E4%BF%A1.jpg"/></a>
                 </div>
             </div>
             <!--广告位结束-->
 
 
-            <div class="widget widget_archive">
+
 
                 <!--文章归档-->
+            <div class="widget widget_archive">
                 <div class="title"><h2>文章归档</h2></div>
-                    {% get_data_date as data_date %}
-                    <ul>
-                        {% if data_date %}
-                            {% for date in data_date %}
-                                <li><a href='{% url 'blog:date' date|date:'Y' date|date:'m' %}'>{{ date|date:'Y-m' }}</a></li>
-                            {% endfor %}
-                        {% else %}
-                            <div>近期没有发表过文章</div>
-                        {% endif %}
-                    </ul>
-                </div>
+                {% get_data_date as data_date %}
+                <ul>
+                    {% if data_date %}
+                        {% for date in data_date %}
+                            <li><a href='{% url 'blog:date' date|date:'Y' date|date:'m' %}'>{{ date|date:'Y-m' }}</a></li>
+                        {% endfor %}
+                    {% else %}
+                        <div>近期没有发表过文章</div>
+                    {% endif %}
+                </ul>
+            </div>
+
                 <!--文章归档结束-->
 
                 <!--猜你喜欢-->
@@ -104,14 +108,14 @@
                     <ul>
                         {% get_article_list 'loves' 6 as hot_tag %}
                         {% for hot in hot_tag %}
-                        <li>
-                            <a href="/article/{{ hot.pk }} " title="{{ hot.title }}"><span class="thumbnail"><img
-                                src="{{ hot.img_link }}" alt="{{ hot.title }}"/></span>
-                                <span class="text">{{ hot.title }}</span>
-                                <span class="muted">{{ hot.create_date|date:'Y-m-d' }}</span>
-                                <span class="muted">{{ hot.loves }}喜欢</span>
-                            </a>
-                        </li>
+                            <li>
+                                <a href="/article/{{ hot.pk }} " title="{{ hot.title }}"><span class="thumbnail"><img
+                                        src="{{ hot.img_link }}" alt="{{ hot.title }}"/></span>
+                                    <span class="text">{{ hot.title }}</span>
+                                    <span class="muted">{{ hot.create_date|date:'Y-m-d' }}</span>
+                                    <span class="muted">{{ hot.loves }}喜欢</span>
+                                </a>
+                            </li>
                         {% endfor %}
                     </ul>
                 </div>
