@@ -224,7 +224,7 @@ def LoveView(request):
         # for id in Video.id:
         #     print(id)
 
-        video = Video.objects.get(id=6)
+        video = Video.objects.get(id=1)
         article.loves += 1
         video.loves =article.loves
         video.save()
