@@ -220,9 +220,13 @@ def LoveView(request):
     data_id = request.POST.get('um_id', '')
     if data_id:
         article = Article.objects.get(id=data_id)
-        video = Video.objects.get(id=data_id)
+        # print(data_id)
+        # for id in Video.id:
+        #     print(id)
+
+        video = Video.objects.get(id=6)
         article.loves += 1
-        video.loves = article.loves
+        video.loves =article.loves
         video.save()
         article.save()
         return HttpResponse(article.loves)
