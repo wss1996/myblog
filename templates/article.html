@@ -14,7 +14,7 @@
             <div class="breadcrumbs">
                 <a title="返回首页" href="/"><i class="fa fa-home"></i></a><small>></small>
                 <a href="/category/{{ object.category.bigcategory.slug }}//">{{ object.category.bigcategory.name }}</a> <small>></small>
-                <a href="/category/{{ object.category.bigcategory.slug }}/{{ object.category.name|lower }}">{{ object.category.name }}</a>
+                <a href="/category/{{ object.category.bigcategory.slug }}/{{ object.category.slug|lower }}">{{ object.category.name }}</a>
                 <small>></small> <span class="muted">{{ object.title }}</span>
             </div>
             <header class="article-header">
