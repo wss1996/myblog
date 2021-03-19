@@ -9,7 +9,7 @@ django-filter==2.1.0
 django-haystack==2.8.1
 django-imagekit==4.0.1
 django-markdown-deux==1.0.5
-djangorestframework==3.9.2
+djangorestframework==3.11.2
 django-ckeditor==5.7.1
 django-js-asset==1.2.2
 emoji==0.4.5
